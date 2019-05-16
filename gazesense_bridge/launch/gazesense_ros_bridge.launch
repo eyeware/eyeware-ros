@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+<arg name="host_ip" default="192.168.4.191" />
+<arg name="frame_id" default="camera_link" />
+
+<node pkg="gazesense_bridge" type="gazesense_ros_bridge.py" name="gazense_bridge" output="screen">
+    <param name="gaze_sense_frame_id" value="$(arg frame_id)" />
+    <param name="gaze_sense_host_ip" value="$(arg host_ip)" />
+    <param name="pub_rate" value="20" />
+</node>
+
+
+</launch>
