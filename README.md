@@ -54,7 +54,7 @@ The Python API of GazeSense requires Python 3.6, but ROS Melodic ships with Pyth
 sudo apt install python3-pip python3-all-dev python3-rospkg
 # The previous command might uninstall parts of ROS Melodic. We now restore it:
 sudo apt install ros-melodic-desktop-full --fix-missing
-sudo apt python3-numpy
+sudo apt install python3-numpy
 sudo apt install ros-melodic-ddynamic-reconfigure
 ```
 
@@ -66,7 +66,7 @@ We create the ROS workspace in `~/gazesense_ws/` in this way:
 source /opt/ros/melodic/setup.bash
 mkdir -p ~/gazesense_ws/src/
 catkin_init_workspace ~/gazesense_ws/src/
-git -C ~/gazesense_ws/src/ clone git@github.com:eyeware/eyeware-ros.git
+git -C ~/gazesense_ws/src/ clone https://github.com/eyeware/eyeware-ros
 catkin_make -C ~/gazesense_ws/
 ```
 
