@@ -1,0 +1,3 @@
+bool is_lost
+int64 track_session_uid
+geometry_msgs/Transform transform

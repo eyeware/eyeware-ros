@@ -1,0 +1,47 @@
+<launch>
+
+  <arg name="host"           default="localhost" doc="Host" />
+  <arg name="port"           default="12000"     doc="Port to receive message from GazeSense client" />
+  <arg name="respawn"        default="false"     doc="Automatic restart when node fails" />
+  <arg name="publish_bridge" default="true"      doc="Whether to publish the bridge (for debug)" />
+  <arg name="with_markers"   default="false"     doc="Whether to publish markers" />
+  <arg name="setup"          default=""          doc="GazeSense (.gs / .json) screen/camera setup" />
+  <arg name="root"           default="Camera"    doc="Name which serves as root of GazeSense TF tree" />
+
+  <group ns="gazesense">
+
+    <node
+        if="$(arg publish_bridge)"
+        name="gazesense_bridge"
+        pkg="gazesense_bridge"
+        type="gazesense_bridge_node.py"
+        respawn="$(arg respawn)"
+        output="screen">
+      <param name="port" type="int" value="$(arg port)" />
+      <param name="host" type="str" value="$(arg host)" />
+    </node>
+
+    <node
+        if="$(eval arg('setup') != '')"
+        name="gazesense_tf_publisher"
+        pkg="gazesense_bridge"
+        type="gazesense_tf_publisher_node.py"
+        output="screen">
+      <param name="setup" type="str" value="$(arg setup)" />
+      <param name="root" type="str" value="$(arg root)" />
+    </node>
+
+
+    <node
+        if="$(arg with_markers)"
+        name="gazesense_visualizer"
+        pkg="gazesense_bridge"
+        type="gazesense_visualizer_node.py"
+        output="screen">
+      <param name="setup" type="str" value="$(arg setup)" />
+      <param name="root" type="str" value="$(arg root)" />
+    </node>
+
+  </group>
+
+</launch>
