@@ -1,0 +1,31 @@
+<launch>
+
+  <arg name="host"           default="localhost" doc="Host" />
+  <arg name="port"           default="12000"     doc="Port to receive message from GazeSense client" />
+  <arg name="setup"          default=""          doc="GazeSense (.gs / .json) screen/camera setup" />
+
+  <include
+      file="$(find gazesense_bridge)/launch/gazesense_bridge.launch" >
+      <arg name="port"          value="$(arg port)" />
+      <arg name="host"          value="$(arg host)" />
+      <arg name="setup"         value="$(arg setup)" />
+      <arg name="root"          value="World" />
+      <arg name="with_markers"  value="true" />
+  </include>
+
+  <node
+      name="rviz"
+      pkg="rviz"
+      type="rviz"
+      args="-d $(find gazesense_bridge)/rviz/gazesense.rviz"
+      required="true" >
+  </node>
+
+  <node
+      pkg="tf2_ros"
+      type="static_transform_publisher"
+      name="gazesense_broadcaster"
+      args="0 0 0 0.707 0 0 0.707 map World" >
+  </node>
+
+</launch>

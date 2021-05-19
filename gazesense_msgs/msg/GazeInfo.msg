@@ -1,0 +1,7 @@
+bool is_lost
+
+TrackingConfidence confidence_left
+Ray3D left_eye_ray
+
+TrackingConfidence confidence_right
+Ray3D right_eye_ray

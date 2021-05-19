@@ -1,1 +1,0 @@
-ScreenTarget[] targets

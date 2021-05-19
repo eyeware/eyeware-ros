@@ -1,0 +1,7 @@
+bool is_lost
+
+bool left_eye_closed
+TrackingConfidence confidence_left
+
+bool right_eye_closed
+TrackingConfidence confidence_right
