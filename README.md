@@ -94,7 +94,7 @@ cd ~/gazesense/
 ./run_GazeSense.sh
 ```
 
-Within GazeSense, it is useful to export the 3D Setup description file on the disk as a JSON file. This files encodes the geometric description of the environment, such as the locations and sizes of possible attention targets. We can export the file with this button:
+Within GazeSense, it is useful to export the 3D Setup description file on the disk as a JSON file. This file encodes the geometric description of the environment, such as the locations and sizes of possible attention targets. We can export the file with this button:
 
 ![](doc/gazesense-save-setup.png)
 
